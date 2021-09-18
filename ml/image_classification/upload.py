@@ -26,18 +26,23 @@ def pred(filename):
   np_image = np.array(np_image).astype('float32')/255
 
   im_h, im_w = np_image.shape[:2]
-  bl_h, bl_w = 64, 64
+  sq = 64
 
-  for row in np.arange(im_h - bl_h + 1, step=bl_h):
-    for col in np.arange(im_w - bl_w + 1, step=bl_w):
-      img = np_image[row:row+bl_h, col:col+bl_w]
+
+  for row in range(0, im_h-sq-1):
+    for col in range(0, im_w-sq-1):
+      #print(row)
+      #print(col)
+      img = np_image[row:row+sq, col:col+sq]
       img = transform.resize(img, (64, 64, 3))
       img = np.expand_dims(img, axis=0)
       pred = model.predict(img)
-      result = np.argmax(pred, axis =1)
-      if result == 0:
-        return "Bad"
+      #print(pred)
+      result = np.argmax(pred, axis=1)
+      #print(result)
+      if result == 0 and pred > 0.5:
+        #print(np.average(np.mean(img, axis=(0, 1))))
+        if (np.average(np.mean(img, axis=(0, 1)))) <  0.3:
+            return "Bad"
 
   return "Good"
-
-  #add in neither... if confidence less than certain value, ignore
