@@ -4,11 +4,8 @@ from sqlalchemy import create_engine
 from json import dumps
 from flask_jsonpify import jsonify
 import numpy as np
-from PIL import Image
-import numpy as np
+from PIL import Imagex
 from skimage import transform
-import matplotlib.pyplot as plt
-import pandas as pd
 import base64
 
 app = Flask(__name__)
