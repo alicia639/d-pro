@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue[800],
       ),
-      home: SignUpPage(),
+      home: ImageUploadPage(),
     );
   }
 }
@@ -81,5 +84,50 @@ class SignUpPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ImageUploadPage extends StatefulWidget {
+  const ImageUploadPage({Key? key}) : super(key: key);
+
+  @override
+  _ImageUploadPageState createState() => _ImageUploadPageState();
+}
+
+class _ImageUploadPageState extends State<ImageUploadPage> {
+  @override
+  File? image;
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (image == null) return;
+
+      final tempImage = File(image.path);
+      setState(() {
+        this.image = tempImage;
+      });
+    } on PlatformException catch (e) {
+      print("Failed to pick an image: $e");
+    }
+  }
+
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(
+      children: [
+        Container(
+          child:
+              image != null ? Image.file(image!) : Image.asset("creepy.jpeg"),
+          width: 300,
+          height: 300,
+        ),
+        ElevatedButton(
+            onPressed: () {
+              pickImage();
+            },
+            child: Text("Pick an image"))
+      ],
+    ));
   }
 }
