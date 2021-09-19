@@ -10,39 +10,73 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue[800],
       ),
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 70),
-            child: Column(
-              children: [
-                Image.asset(
-                  "images/creepy.jpeg",
-                  width: 300,
-                  height: 300,
+      home: SignUpPage(),
+    );
+  }
+}
+
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+          child: Column(
+            children: [
+              Image.asset(
+                "images/signup.png",
+                width: 300,
+                height: 300,
+              ),
+              Text(
+                "D-PRO",
+                style: TextStyle(
+                  color: Colors.blue[800],
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text("D-PRO"),
-                Text("Self Dental Checkup at Home"),
-                TextField(
+              ),
+              Text(
+                "Self Dental Checkup at Home",
+                style: TextStyle(
+                  color: Colors.blue[800],
+                ),
+              ),
+              SizedBox(
+                width: 300,
+                child: TextField(
                   decoration: InputDecoration(
                     helperText: 'Enter Full Name',
                   ),
                 ),
-                TextField(
+              ),
+              SizedBox(
+                width: 300,
+                child: TextField(
                   decoration: InputDecoration(
                     helperText: 'Enter Full Name',
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Sign Up"),
-                  style: ElevatedButton.styleFrom(minimumSize: Size(300, 40)),
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text("Sign Up"),
+                style: ElevatedButton.styleFrom(minimumSize: Size(300, 40)),
+              ),
+            ],
           ),
         ),
       ),
