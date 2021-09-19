@@ -1,0 +1,8 @@
+﻿Index,Tooth-pain,color-teeth,cavities,sensitivity-during-sweet-or-cold,bad-breath,bleeding-gums,tongue-color,teeth-not-alligned,Healthy,Tooth disorder
+0,No,No,Yes,No,No,No,Pink,No,No,Tooth decay
+1,No,No,No,Yes,Yes,Yes,Pink,Yes,No,Gingivitis
+2,Yes,No,No,No,Yes,Yes,Pink,Yes,No,Malocclusion
+3,No,Yes,No,No,No,No,No,No,No,Dentinogenesis imperfecta
+4,Yes,No,No,Yes,No,No,Pink,No,No,dentin hypersensitivity
+5,No,No,No,No,No,No,Pink,No,Yes,NA
+6,No,No,No,No,No,No,White,No,No,papillae hypertrophy
